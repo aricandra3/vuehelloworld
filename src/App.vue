@@ -1,10 +1,32 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+export default{
+  data(){
+    return{
+      nama: ""
+    }
+  },
+  methods:{
+   berubah() {
+      this.nama = "ari"
+    },
+    async ambildata() {
+      const response = await fetch("http://127.0.0.1/sensor3");
+      const data = await response.json();
+      this.nama = data.sensor3
+      console.log(data)
+    },
+  },
+};
 </script>
 
 <template>
   <header>
+    <input type="text" v-model="nama"/>
+    {{ nama }}
+    <button @click="berubah()">Berubah</button>
+    <button @click="ambildata()">Ambil Data</button>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
