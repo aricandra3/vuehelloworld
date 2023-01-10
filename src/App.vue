@@ -8,9 +8,6 @@ export default{
     }
   },
   methods:{
-   berubah() {
-      this.nama = "ari"
-    },
     async ambildata() {
       const response = await fetch("http://127.0.0.1/sensor3");
       const data = await response.json();
@@ -22,25 +19,12 @@ export default{
 </script>
 
 <template>
-  <header>
     <input type="text" v-model="nama"/>
     {{ nama }}
-    <button @click="berubah()">Berubah</button>
-    <button @click="ambildata()">Ambil Data</button>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="ITTELKOM SBY" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" @click="ambildata()">Ambil Data</button>
 </template>
+
+
 
 <style scoped>
 header {
